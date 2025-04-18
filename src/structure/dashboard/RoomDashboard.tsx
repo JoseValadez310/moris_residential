@@ -17,20 +17,9 @@ import portraitMode from "../../assets/images/icons/icons8-iphone-16-pro.svg"
 // Test icons
 import Audio   from "../../assets/images/icons/icons8-music.svg"
 import Light   from "../../assets/images/icons/noun-light-bulb-2216273.svg"
-import Climate from "../../assets/images/icons/icons8-winter.svg"
+//import Climate from "../../assets/images/icons/icons8-winter.svg"
 import TV          from "../../assets/images/icons/icons8-tv.svg"
 
-
-type RoomObject = {
-    [key: string]: string[];
-  };
-  
-  // Then your location type might look like:
-  interface LocationType {
-    active: boolean;
-    title: string;
-    rooms: RoomObject[];
-  }
 
 
 
@@ -42,132 +31,297 @@ const RoomsDashboard = () => {
     const previousLocation = location.state?.previousLocation || "Unknown";
 
 
-    useEffect( () => {
 
-        if(previousLocation === "Main"){
-            floorSelection("location_2")
-            console.log("location 2")
-        } else if(previousLocation === "Up Stairs"){
-            floorSelection("location_1")
-            console.log("location 1")
-    
-        } else if(previousLocation === "Down Stairs"){
-            floorSelection("location_3")
-    
-            console.log("location 3")
-    
-        } else if (previousLocation === "Out Doors"){
-            floorSelection("location_4")
-    
-            console.log("location 4")
-    
-        }else (
-            console.log(previousLocation)
-        )
-    
-    },[])
-    
+    const [location1, setLocation1] = useState(false) // upstairs
+    const [location2, setLocation2] = useState(true) // main 
+    const [location3, setLocation3] = useState(false) // down stairs - backyard
 
-   
 
-    
+    const [roomActiveSource1, setRoomActiveSource1] = useState(0) // breaskfast
+    const [roomActiveSource2, setRoomActiveSource2] = useState(0) // gym 
+    const [roomActiveSource3, setRoomActiveSource3] = useState(0) // game room
+    const [roomActiveSource4, setRoomActiveSource4] = useState(0) // master bed 
+    const [roomActiveSource5, setRoomActiveSource5] = useState(0) // master bath
+    const [roomActiveSource6, setRoomActiveSource6] = useState(0) // office
+    const [roomActiveSource7, setRoomActiveSource7] = useState(0) // media room
+    const [roomActiveSource8, setRoomActiveSource8] = useState(0) // family room
+    const [roomActiveSource9, setRoomActiveSource9] = useState(0) // bar
 
-    const [zone, setZone] = useState<{
-        location_1: LocationType;
-        location_2: LocationType;
-        location_3: LocationType;
-        location_4: LocationType;
-        location_5: LocationType;
-        location_6: LocationType;
-        location_7: LocationType;
-        location_8: LocationType;
-      }>
-      
-      ({
-        location_1: {
-            active: false,
-            title:"Up Stairs",
-            rooms:[
-                {"Master Bathroom":["media","music","light"]},
-                {"Master Bedroom":["media","music","light"]},
-                {"Game Room":["media","music","light"]},
-                {"Office":["media","music","light"]},
-                {"Kids Room":["light"]},
-            ]
-        },
-        location_2: {
-            active: true,
-            title:"Main",
-            rooms:[
-                {"Family Room":["media","music","light"]},
+    const [roomMusicActive1, setRoomMusicActive1] = useState(false) // dining room
+    const [roomMusicActive2, setRoomMusicActive2] = useState(false) // living room
 
-                {"Breakfast Nook":["media","music","light"]},
-                {"Bar":["media","music","light"]},    
 
-                {"Dining Room":["light"]}, 
-                {"Living Room":["light"]}, 
-                {"Foyer":["light"]}, 
-            ]
-        },
-        location_3: {
-            active: false,
-            title:"Down Stairs",
-            rooms:[
-                {'Media Room':["media","music","light"]}, 
-                {'Gym':["media","music","light"]},
-                {"Backyard":["light"]}
-            ]
-        },
-        location_4: {
-            active: false,
-            title:"null",
-            rooms:[]
-        },
-        
-        location_5: {
-            active: false,
-            title:"null",
-            rooms:[]
-        },
-        location_6: {
-            active: false,
-            title:"null",
-            rooms:[]
-        },
-        location_7: {
-            active: false,
-            title:"null",
-            rooms:[]
-        },
-        location_8: {
-            active: false,
-            title:"null",
-            rooms:[]
-        },
+
+
+    useEffect(()=>{
+
+        const roomMusic1 = window.CrComLib.subscribeState("b","507",(value:boolean)=>{setRoomMusicActive1(value)})
+        const roomMusic2 = window.CrComLib.subscribeState("b","503",(value:boolean)=>{setRoomMusicActive2(value)})
+
+        //------------
+        const room1 = window.CrComLib.subscribeState("n","1",(value:number)=>{setRoomActiveSource1(value)})
+        const room2 = window.CrComLib.subscribeState("n","2",(value:number)=>{setRoomActiveSource2(value)})
+        const room3 = window.CrComLib.subscribeState("n","3",(value:number)=>{setRoomActiveSource3(value)})
+        const room4 = window.CrComLib.subscribeState("n","4",(value:number)=>{setRoomActiveSource4(value)})
+        const room5 = window.CrComLib.subscribeState("n","5",(value:number)=>{setRoomActiveSource5(value)})
+        const room6 = window.CrComLib.subscribeState("n","6",(value:number)=>{setRoomActiveSource6(value)})
+        const room7 = window.CrComLib.subscribeState("n","7",(value:number)=>{setRoomActiveSource7(value)})
+        const room8 = window.CrComLib.subscribeState("n","8",(value:number)=>{setRoomActiveSource8(value)})
+        const room9 = window.CrComLib.subscribeState("n","9",(value:number)=>{setRoomActiveSource9(value)})
+  
+
+        return () => {
+
+            window.CrComLib.unsubscribeState("b","507",roomMusic1)
+            window.CrComLib.unsubscribeState("b","503",roomMusic2)
+
+            window.CrComLib.unsubscribeState("n","1",room1)
+            window.CrComLib.unsubscribeState("n","2",room2)
+            window.CrComLib.unsubscribeState("n","3",room3)
+            window.CrComLib.unsubscribeState("n","4",room4)
+            window.CrComLib.unsubscribeState("n","5",room5)
+            window.CrComLib.unsubscribeState("n","6",room6)
+            window.CrComLib.unsubscribeState("n","7",room7)
+            window.CrComLib.unsubscribeState("n","8",room8)
+            window.CrComLib.unsubscribeState("n","9",room9)
+
+        }
     })
 
+   
 
-    const activeLocations = Object.values(zone).filter(location => location.active);
+    const changeLocation = (id:string) => {
+
+                if(id === "1"){
+
+            setLocation1(true)
+            setLocation2(false)
+            setLocation3(false)
+
+        } else if(id === "2"){
+
+            setLocation1(false)
+            setLocation2(true)
+            setLocation3(false)
+
+        }  else if(id === "3"){
+
+            setLocation1(false)
+            setLocation2(false)
+            setLocation3(true)
+
+        }
+    }
+
+
+    useEffect( ()=>{ 
+        
+        if(previousLocation === 'Up Stairs'){
+            setLocation1(true)
+            setLocation2(false)
+            setLocation3(false)
+        } else if (previousLocation === "Down Stairs"){
+            setLocation1(false)
+            setLocation2(false)
+            setLocation3(true)
+        } else {
+            setLocation1(false)
+            setLocation2(true)
+            setLocation3(false)
+        }
+
+        
+
+    },[])
+   
+    
+
+
+
+    const upStairs = ( 
+        <>
+            <Link to={`/masterbathroom`} className="room_card" id={roomActiveSource5 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Master Bathroom</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/masterbedroom`} className="room_card" id={roomActiveSource4 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Master Bedroom</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+    
+            <Link to={`/gameroom`} className="room_card" id={roomActiveSource3 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Game Room</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+          
+            <Link to={`/office`} className="room_card" id={roomActiveSource6 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Office</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/kidsroom`} className="room_card" id={false?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Kid's Room</p>
+
+                    <div className="icon_preview">
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+        </>
+    )
+
+    const mainFloor = ( 
+        <>
+            <Link to={`/familyroom`} className="room_card" id={roomActiveSource8 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Family Room</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/breakfastnook`} className="room_card" id={roomActiveSource1 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Breakfast Nook</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/bar`} className="room_card" id={roomActiveSource9 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Bar</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/diningroom`} className="room_card" id={false?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Dining Room</p>
+
+                    <div className="icon_preview">
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/livingroom`} className="room_card" id={false?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Living Room</p>
+
+                    <div className="icon_preview">
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/foyer`} className="room_card" id={false?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Foyer</p>
+
+                    <div className="icon_preview">
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+          
+        </>
+    )
+
+    const downStairs = ( 
+        <>
+            <Link to={`/mediaroom`} className="room_card" id={roomActiveSource7 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Media Room</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/gym`} className="room_card" id={roomActiveSource2 > 0?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Gym </p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+            <Link to={`/backyard`} className="room_card" id={false?"active_btn" : "" }>
+                <div className="test">
+                    <p className="room_name">Bar</p>
+
+                    <div className="icon_preview">
+                        <img src={TV} style={{ height: "1.25rem" }} />                           
+                        <img src={Light} style={{ height: "1.25rem" }} />
+                        <img src={Audio} style={{ height: "1.25rem" }} />
+                    </div>
+                </div>
+            </Link>
+
+          
+          
+        </>
+    )
+
+
+
 
 
    
 
-    const floorSelection = (locationId: keyof typeof zone) => {
-        setZone((prevZone) => {
-          // Create a copy of the entire state
-          const newZone = { ...prevZone };
-      
-          // Set all locations to inactive
-          Object.keys(newZone).forEach((key) => {
-            newZone[key as keyof typeof zone].active = false;
-          });
-      
-          // Now activate just the clicked location
-          newZone[locationId].active = true;
-      
-          return newZone;
-        });
-      };
+  
 
 
     
@@ -192,14 +346,9 @@ const RoomsDashboard = () => {
               
 
             <div className="nav">
-                    <button className={zone.location_1.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_1.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_1")}> <p>{zone.location_1.title}  </p> </button>
-                    <button className={zone.location_2.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_2.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_2")}> <p>{zone.location_2.title}  </p> </button>
-                    <button className={zone.location_3.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_3.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_3")}> <p>{zone.location_3.title}  </p> </button>
-                    <button className={zone.location_4.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_4.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_4")}> <p>{zone.location_4.title}  </p> </button>
-                    <button className={zone.location_5.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_5.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_5")}> <p>{zone.location_5.title}  </p> </button>
-                    <button className={zone.location_6.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_6.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_6")}> <p>{zone.location_6.title}  </p> </button>
-                    <button className={zone.location_7.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_7.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_7")}> <p>{zone.location_7.title}  </p> </button>
-                    <button className={zone.location_8.active ? "btn_selected" : 'btn_not_selected'} id={zone.location_8.title === "null"? "display_none":"floor_selection_nonactive"}  onClick={()=> floorSelection("location_8")}> <p>{zone.location_8.title}  </p> </button>
+                <button className={location1 ? "btn_selected" : 'btn_not_selected'}   onClick={()=> changeLocation("1")}> <p> Up Stairs   </p> </button>
+                <button className={location2 ? "btn_selected" : 'btn_not_selected'}  onClick={()=> changeLocation("2")}>  <p> Main        </p> </button>
+                <button className={location3 ? "btn_selected" : 'btn_not_selected'}  onClick={()=> changeLocation("3")}>  <p> Down Stairs </p> </button>
             </div>
             
 
@@ -210,45 +359,15 @@ const RoomsDashboard = () => {
         <h1 className="title_info"> Room Selection </h1>
         
         
-        {activeLocations.map((location, idx) => (
-            <div className="room_selection_options" key={idx}>
-                {location.rooms.map((roomObj, roomIdx) => {
-                // Extract the single key and its array of items
-                const roomName = Object.keys(roomObj)[0];       // e.g. "Media Room"
-                const items = roomObj[roomName];               // e.g. ["media", "music", "light"]
+   
+        <div className="room_selection_options">
 
-                return (
-                    <Link
-                        to={`/${roomName.replace(/\s/g, "").toLowerCase()}`}
-                        className="room_card"
-                        key={roomIdx}
-                    >
-                    {/* Display the room name */}
-                    <div className="test">
-                        <p className="room_name">{roomName}</p>
-
-                        {/* Now display the relevant icons or text for each item in `items` */}
-                        <div className="icon_preview">
-                            {items.includes("media") && (
-                            <img src={TV} style={{ height: "1.25rem" }} />
-                            )}
-                            {items.includes("light") && (
-                            <img src={Light} style={{ height: "1.25rem" }} />
-                            )}
-                            {items.includes("music") && (
-                            <img src={Audio} style={{ height: "1.25rem" }} />
-                            )}
-                            {items.includes("climate") && (
-                            <img src={Climate} style={{ height: "1.25rem" }} />
-                            )}
-                            {/* etc. Add any other items as needed */}
-                        </div>
-                    </div>
-                    </Link>
-                );
-                })}
-            </div>
-        ))}
+            {location1? upStairs  :<></>}
+            {location2? mainFloor :<></>}
+            {location3? downStairs:<></>}
+            
+        </div>
+      
 
              
 

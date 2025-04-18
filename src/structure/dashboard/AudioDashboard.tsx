@@ -1652,31 +1652,57 @@ const [houseVol, setHouseVol] = useState(0)
 
 
           
-    <div className="audio_back_button" onClick={() => navigate(-1)}> 
-        <button className="audio_back">
-            <img src={backbutton}/>
-        </button>
-    </div> 
+      <div className="audio_back_button" onClick={()=> navigate(-1)}> 
+              <button className="pill_shape_audio">
+                  <img className="btn_image" src={backbutton}/>
+              </button>
+      </div> 
         
-    <div className='menu_tablet' onClick={() => zoneMenu("menuOpen")}>
-      <button className="back_button" style={{zIndex:"10"}}>
-            <img 
-              className='back_button_image' 
-              src={menu} 
-              style={{height:"60%", zIndex:"1px"}} 
-            />
+   
+      <div className='audio_control' onTouchEnd={() => zoneMenu("menuOpen")}>
+          <button className="pill_shape_audio">
+              <img 
+                className="btn_image" 
+                src={menu} 
+              />
+              <p> Audio Control</p>
           </button>
-    </div>
+      </div>
 
-    <div className='menu_mobile' onClick={() => zoneMenu("menuOpen")}>
-      <button className="back_button" style={{zIndex:"10"}}>
-            <img 
-              className='back_button_image' 
-              src={menu} 
-              style={{height:"60%", zIndex:"1px"}} 
-            />
-          </button>
-    </div>
+      <div className='music_selection'>
+              <button  className="pill_shape_audio" 
+                onClick={() => {          
+                  if (!isBrowseMenuVisible) {
+                    browseTopMenu();
+                    setIsBrowseMenuVisible(true);
+                    setIsAtTopMenu(true);
+                    } else {
+                    if (!isAtTopMenu) {
+                      browseTopMenu();
+                      setIsAtTopMenu(true);
+                    } else {
+                      setIsBrowseMenuVisible(false);
+                      setBrowseItems(null);
+                      setCurrentBrowseCaption('');
+                    }
+                  }
+                }}
+              >
+    
+              {isBrowseMenuVisible 
+                ? (isAtTopMenu 
+                    ? <img className="btn_image" src={close}   alt="Close"/> 
+                    : <img className="btn_image" src={topmenu} alt="Top Menu"/>
+                  )
+                : 
+                <> <img className="btn_image" src={musicIcon}/> <p>Music Selection</p> </>
+              }
+              </button>
+        </div>
+    
+
+
+    
 
     <div className={openZones? "zone_menu": "display_none"} style={{gridColumn:'1/10', gridRow:'1/10', paddingInline:".2rem"}}>
             <div className='off_button_menu' style={{background:"none"}}>
@@ -1773,7 +1799,8 @@ const [houseVol, setHouseVol] = useState(0)
         <div className='playback_controls'>
           <button 
             onClick={toggleShuffle} 
-            className={currentStatus.shuffle ? 'transport_button_active' : 'btn_circle'}
+            className =" btn_circle"
+            id={currentStatus.shuffle ? 'active_btn' : ''}
           >
             <img className='btn_image' src={shuffle} alt="shuffle" />
           </button>
@@ -1792,7 +1819,8 @@ const [houseVol, setHouseVol] = useState(0)
           </button>
           <button 
             onClick={toggleRepeat} 
-            className={currentStatus.repeat ? 'transport_button_active' : 'btn_circle'}
+            className =" btn_circle"
+            id={currentStatus.repeat ? 'active_btn' : ''}
           >
             <img className='btn_image' src={repeat} alt="repeat" style={{transform:"scaleX(-1)"}}/>
           </button>
@@ -1816,36 +1844,8 @@ const [houseVol, setHouseVol] = useState(0)
           <p className='end_postition'>{formatTime(currentStatus.duration)}</p> 
         </div>
 
-        <div className='music_button_container'>
-          <button 
-            className="home_button" 
-            onClick={() => {
-              console.log("[music_button] Toggling browser menu");
-              if (!isBrowseMenuVisible) {
-                browseTopMenu();
-                setIsBrowseMenuVisible(true);
-                setIsAtTopMenu(true);
-              } else {
-                if (!isAtTopMenu) {
-                  browseTopMenu();
-                  setIsAtTopMenu(true);
-                } else {
-                  setIsBrowseMenuVisible(false);
-                  setBrowseItems(null);
-                  setCurrentBrowseCaption('');
-                }
-              }
-            }}
-          >
-            {isBrowseMenuVisible 
-              ? (isAtTopMenu 
-                  ? <img style={{height:"76%"}} src={close} alt="Close"/> 
-                  : <img style={{height:"76%"}} src={topmenu} alt="top menu"/>
-                )
-              : <img style={{height:"76%"}} src={musicIcon} alt="Music"/>
-            }
-          </button>
-        </div>
+    
+     
 
         <div className='browser_container'>
           {isBrowseMenuVisible && browseItems && (
@@ -1884,9 +1884,10 @@ const [houseVol, setHouseVol] = useState(0)
           )}
         </div>
 
-        <div className="volume_controls">
+        <div className="display_none">
           <button 
             onClick={muteVolume} 
+            
             className={currentStatus.mute === "True" ? 'transport_button_active' : 'btn_circle'}
           >
             <p style={{fontSize:"16px"}}>Mute</p>

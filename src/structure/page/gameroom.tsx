@@ -138,6 +138,7 @@ const GameRoom = () =>{
 // console.log 
 
 
+const [activeSource, setActiveSource] = useState(0)
 
 /*
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -171,6 +172,7 @@ const GameRoom = () =>{
         const light_6 = window.CrComLib.subscribeState("b",`${light_6_join}`,(value: boolean) => {setLight_6(value);});
 
   
+        const activeSource = window.CrComLib.subscribeState("n",roomLocation,(value:number)=>{setActiveSource(value)})
 
         return () => {
 
@@ -199,11 +201,133 @@ const GameRoom = () =>{
 
 
             
-          
+            window.CrComLib.unsubscribeState("n",roomLocation,activeSource)
+
             
         }
       }, []);
 
+
+
+      useEffect(()=>{
+        switch (activeSource) {
+            case 1:
+                setMedia1(true)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","1",true)
+                window.CrComLib.publishEvent("b","1",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,1)
+    
+                
+                break;
+    
+            case 2:
+                setMedia1(false)
+                setMedia2(true)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","2",true)
+                window.CrComLib.publishEvent("b","2",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,2)
+                break;
+    
+            case 3:
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(true)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","5",true)
+                window.CrComLib.publishEvent("b","5",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,3)
+                break;
+    
+            case 4:   
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(true)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","6",true)
+                window.CrComLib.publishEvent("b","6",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,4)
+                break;
+    
+            case 5:
+    
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(true)
+                setMedia6(false)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","7",true)
+                window.CrComLib.publishEvent("b","7",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,5)
+                break;
+    
+            case 6:
+    
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(true)
+                setMedia7(false)
+                setMedia8(false)
+                window.CrComLib.publishEvent("b","8",true)
+                window.CrComLib.publishEvent("b","8",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,6)
+                break;
+    
+            case 7:
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(true)
+                setMedia8(false)
+    
+                window.CrComLib.publishEvent("b","9",true)
+                window.CrComLib.publishEvent("b","9",false)
+                window.CrComLib.publishEvent("n",`${roomLocation}`,7)
+                break;
+    
+    
+            default:
+                setMedia1(false)
+                setMedia2(false)
+                setMedia3(false)
+                setMedia4(false)
+                setMedia5(false)
+                setMedia6(false)
+                setMedia7(false)
+                break;
+        }
+    
+    },[activeSource])
+    
 
 /*
 ---------------------------------------------------------------------------- Light section  
@@ -817,11 +941,9 @@ if(media1){
                 </p>
 
                 <div className="power_menu_button">
-                    <Link className="yes_reboot" to={"/"}> 
                         <button className="yes_reboot" onClick={()=> powerMenu("menu_off")}> 
                             <p>YES</p> 
                         </button> 
-                    </Link>
                     
                     <button className="no_reboot" onClick={()=> powerMenu("menu")}> 
                         <p>NO</p> 
