@@ -48,6 +48,12 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const FamilyRoom = () =>{
+    
+
+
+// Subscribe to the heartbeat request
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */
@@ -315,7 +321,7 @@ const sliderValue = (value: boolean, id: string) => {
 if(media1){
     //display controller and hide source selection
        active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_on"      
         media_2 = "media_off"  
         media_3 = "media_off"  
@@ -328,7 +334,7 @@ if(media1){
     else if(media2){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
        media_1 = "media_off"   
        media_2 = "media_on" 
        media_3 = "media_off"  
@@ -341,7 +347,7 @@ if(media1){
     else if(media3){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_on"  
@@ -354,7 +360,7 @@ if(media1){
     else if(media4){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  
@@ -367,7 +373,7 @@ if(media1){
     else if(media5){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  
@@ -380,7 +386,7 @@ if(media1){
     else if(media6){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  
@@ -393,7 +399,7 @@ if(media1){
     else if(media7){
     //display controller and hide source selection
         active_media = true
-    //displaying the correct controller and hiding the rest
+    //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  
@@ -406,7 +412,7 @@ if(media1){
     else if(media8){
     //display controller and hide source selection
         active_media = true
-     //displaying the correct controller and hiding the rest
+     //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  
@@ -421,7 +427,7 @@ if(media1){
 
        //display controller and hide source selection
             active_media = false
-       //displaying the correct controller and hiding the rest
+       //displaying the correct controller and hide the rest
         media_1 = "media_off"   
         media_2 = "media_off" 
         media_3 = "media_off"  

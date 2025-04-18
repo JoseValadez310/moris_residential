@@ -363,7 +363,7 @@
 
 
 
-                            @media only screen and (max-device-width: 430px) and (max-device-width: 837px) and (orientation: portrait){
+                            @media only screen and (max-device-width: 480px) and (max-device-width: 837px) and (orientation: portrait){
 
 
  
@@ -404,7 +404,7 @@
 
 
 
-@media only screen and (max-device-height:430px) and (orientation:landscape){
+@media only screen and (max-device-height:480px) and (orientation:landscape){
 
     #controller_layout_back_button{
         grid-column: 1/3;

@@ -14,6 +14,10 @@ import { useState, useEffect } from "react"
 
 const SecurityDashboard =()=>{
 
+ 
+
+
+
         const green  = "green_ready"
         const yellow = "yellow_stay"
         const red  = "red_armed"

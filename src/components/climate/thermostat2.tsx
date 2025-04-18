@@ -224,7 +224,7 @@ const Thermostat5 = () =>{
     if(fan_auto){
         fan_name = "Auto"
     } 
-    else if(fan_on){
+    else if(fanOn){
         fan_name = "On"
     } else {
         fan_name = "--"
@@ -282,7 +282,7 @@ const Thermostat5 = () =>{
                                 
                                 <div className= "thermostat_setpoint">  
                                     <div className="setpoint_container">
-                                        <p className="setPoint_value">{cool_set_point_fb/10}°</p>
+                                        <p className="setPoint_value">{650/10}°</p>
                                         <p className="setPoint_title">Cool To</p>
                                     </div>
                                 </div>

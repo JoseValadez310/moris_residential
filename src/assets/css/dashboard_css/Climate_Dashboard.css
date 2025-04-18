@@ -103,7 +103,7 @@
 
 
 
-    @media only screen and (max-device-width: 430px)  and (orientation: portrait){
+    @media only screen and (max-device-width: 550px)  and (orientation: portrait){
         .climate_page{
             grid-template-rows: 6% 1fr 1fr 1fr 1fr 1fr 1fr 6%;
 

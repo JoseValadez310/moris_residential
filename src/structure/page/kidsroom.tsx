@@ -30,6 +30,8 @@ import portraitMode from "../../assets/images/icons/icons8-iphone-16-pro.svg"
 
 
 const KidsRoom = () =>{
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */

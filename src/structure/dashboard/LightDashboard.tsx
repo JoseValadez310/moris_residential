@@ -40,6 +40,8 @@ import portraitMode from "../../assets/images/icons/icons8-iphone-16-pro.svg"
 
 const LightDashboard = () =>{
 
+  
+
     //--------------------------------------------------------------------------------------------------------------------------------------- Current Floor section 
 
         const [upStairs, setUpStairs]     = useState(false)
@@ -3129,14 +3131,7 @@ const LightDashboard = () =>{
         </div>
 
 
-        <div className="mobile_nav">
-            <button onClick={() => currentFloor("global")}    className={globalScenes?   "btn_selected" : "btn_not_selected"}>      <p> Global</p>     </button>
-            <button onClick={() => currentFloor("up")}    className={upStairs?   "btn_selected" : "btn_not_selected"}>      <p> Up Stairs</p>     </button>
-            <button onClick={() => currentFloor("main")}  className={main? "btn_selected" : "btn_not_selected"}>            <p> Main </p>         </button>
-            <button onClick={() => currentFloor("down")}  className={downStairs?   "btn_selected" : "btn_not_selected"}>    <p> Down Stairs</p>   </button>
-            <button onClick={() => currentFloor("out")}   className={outSide? "btn_selected" : "btn_not_selected"}>         <p> Out Doors</p>     </button>
-        </div>
-
+       
         
        
 

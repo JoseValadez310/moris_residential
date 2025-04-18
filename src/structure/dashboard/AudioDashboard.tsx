@@ -205,11 +205,13 @@ const filteredItems = items.filter(item => {
       item.name !== "Napster" &&
       item.name !== "Create a Pandora station..." &&
       item.name !== "Now Playing Queue"
+     
     );
   }
   return (
     item.name !== "Create a Pandora station..." &&
-    item.name !== "Now Playing Queue"
+    item.name !== "Now Playing Queue"&&
+     item.name !== "Use another Spotify account..."
   );
 });
     setCurrentBrowseCaption(caption);
@@ -955,7 +957,7 @@ const [houseVol, setHouseVol] = useState(0)
     const zoneGroup1 = (
       <>
       
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_8_state? "active_btn":""} >
               <div className='power_on_off'>
                 <button className={zone_music_8_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_8, true), window.CrComLib.publishEvent("b", zone_music_8, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -992,7 +994,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_9_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_9_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_9, true), window.CrComLib.publishEvent("b", zone_music_9, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1029,7 +1031,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_10_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_10_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_10, true), window.CrComLib.publishEvent("b", zone_music_10, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1072,7 +1074,7 @@ const [houseVol, setHouseVol] = useState(0)
     const zoneGroup2 = (
 
       <>
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_17_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_17_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_17, true), window.CrComLib.publishEvent("b", zone_music_17, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1109,7 +1111,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_1_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_1_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_1, true), window.CrComLib.publishEvent("b", zone_music_1, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1146,7 +1148,7 @@ const [houseVol, setHouseVol] = useState(0)
             </div>
             </div>
         
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_2_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_2_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_2, true), window.CrComLib.publishEvent("b", zone_music_2, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1183,7 +1185,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_3_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_3_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_3, true), window.CrComLib.publishEvent("b", zone_music_3, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1220,7 +1222,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_4_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_4_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_4, true), window.CrComLib.publishEvent("b", zone_music_4, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1257,7 +1259,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_5_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_5_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_5, true), window.CrComLib.publishEvent("b", zone_music_5, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1294,7 +1296,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_6_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_6_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_6, true), window.CrComLib.publishEvent("b", zone_music_6, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1337,7 +1339,7 @@ const [houseVol, setHouseVol] = useState(0)
     const zoneGroup3 = (
       <>
 
-<div className='zone_container'>
+<div className='zone_container' id={zone_music_18_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_18_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_18, true), window.CrComLib.publishEvent("b", zone_music_18, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1375,7 +1377,7 @@ const [houseVol, setHouseVol] = useState(0)
             </div>
 
 
-        <div className='zone_container'>
+        <div className='zone_container' id={zone_music_11_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_11_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_11, true), window.CrComLib.publishEvent("b", zone_music_11, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1412,7 +1414,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_12_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_12_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_12, true), window.CrComLib.publishEvent("b", zone_music_12, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1449,7 +1451,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_13_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_13_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_13, true), window.CrComLib.publishEvent("b", zone_music_13, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1492,7 +1494,7 @@ const [houseVol, setHouseVol] = useState(0)
     const zoneGroup4 = (
       <>
       
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_7_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_7_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_7, true), window.CrComLib.publishEvent("b", zone_music_7, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1530,7 +1532,7 @@ const [houseVol, setHouseVol] = useState(0)
             </div>
 
                 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_14_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_14_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_14, true), window.CrComLib.publishEvent("b", zone_music_14, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1567,7 +1569,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_15_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_15_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_15, true), window.CrComLib.publishEvent("b", zone_music_15, false), console.log("turning off"))}>
                   <p>Power On</p>
@@ -1604,7 +1606,7 @@ const [houseVol, setHouseVol] = useState(0)
               </div>
             </div>
 
-            <div className='zone_container'>
+            <div className='zone_container' id={zone_music_16_state? "active_btn":""}>
               <div className='power_on_off'>
                 <button className={zone_music_16_state ? "display_none" : "power_on"} onClick={() => (window.CrComLib.publishEvent("b", zone_music_16, true), window.CrComLib.publishEvent("b", zone_music_16, false), console.log("turning off"))}>
                   <p>Power On</p>

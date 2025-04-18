@@ -27,6 +27,8 @@ import Thermostat5 from "../../components/climate/thermostat5";
 
 const ClimateDashboard = () =>{
 
+    
+
   
 
 

@@ -46,6 +46,18 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const MediaRoom = () =>{
+    
+ 
+ 
+
+   
+
+
+             
+
+  
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */
@@ -134,6 +146,8 @@ const MediaRoom = () =>{
 // console.log 
 
 
+const [activeSource, setActiveSource] = useState(0)
+
 
 /*
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -141,6 +155,8 @@ const MediaRoom = () =>{
 
     useEffect(() => {
         // TV Soucres
+
+        const activeSource = window.CrComLib.subscribeState("n",roomLocation,(value:number)=>{setActiveSource(value)})
         const media1 = window.CrComLib.subscribeState("b","1",(value: boolean) => {setMedia1(value);});  
         const media2 = window.CrComLib.subscribeState("b","2",(value: boolean) => {setMedia2(value);});  // ATV 1 his
         const media3 = window.CrComLib.subscribeState("b","3",(value: boolean) => {setMedia3(value);});  // ATV 2 hers
@@ -167,6 +183,8 @@ const MediaRoom = () =>{
   
 
         return () => {
+
+            window.CrComLib.unsubscribeState("n",roomLocation,activeSource)
 
             // TV Soucres
             window.CrComLib.unsubscribeState("b","1",media1)
@@ -798,7 +816,7 @@ if(media1){
             }
 
 
-        <h1 className="title_info"> {roomName} </h1>
+        <h1 className="title_info"> {roomName} current source {activeSource} </h1>
 
         <div className={tvPowerMenu? "power_menu_overlay" : "hide_power_menu_overlay"} >
             <div className="power_menu">

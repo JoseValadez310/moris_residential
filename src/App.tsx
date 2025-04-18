@@ -1,7 +1,7 @@
 import './assets/css/Index.css'
-import 'animate.css';
+
 import {useMemo, useState} from 'react';
-import useWebXPanel from './hooks/useWebXPanel';
+import useWebXPanel from "./hooks/useWebXPanel";
 
 import {createHashRouter, RouterProvider} from 'react-router-dom'
 
@@ -50,6 +50,17 @@ import ScreenSize from './structure/tools/ScreenSize';
    
 
 function App() {
+
+  const webXPanelConfig = useMemo(() => ({
+    ipId: '55',
+    host: '10.10.10.40',
+    roomId: '',
+    authToken: ''
+  }), []); // Dependencies array is empty, so this object is created only once
+
+  useWebXPanel(webXPanelConfig);
+
+  
   const [mute, setMute] = useState<string>("False");
 
   const router = createHashRouter ([
@@ -158,15 +169,6 @@ function App() {
 ])
 
 
-  
-  const webXPanelConfig = useMemo(() => ({
-    ipId: '0x03',
-    host: '0.0.0.0',
-    roomId: '',
-    authToken: ''
-  }), []); // Dependencies array is empty, so this object is created only once
-
-  useWebXPanel(webXPanelConfig);
 
   console.log(mute)
 

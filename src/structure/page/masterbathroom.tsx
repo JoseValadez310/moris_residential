@@ -49,6 +49,8 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const MasterBathroom = () =>{
+    
+  
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */
@@ -767,7 +769,7 @@ if(media1){
         <div className="generic_room">
 
 <div className="room_back_corner" >
-                <Link to={"/RoomsDashboard"}state ={{previousLocation:"Up Stairs"}} onClick={() => closeOutPowerOption} > 
+                <Link to={"/RoomsDashboard"} state ={{previousLocation:"Up Stairs"}} onClick={() => closeOutPowerOption} > 
                     <button className="back_button" >
                         <img src={menu_button}/>
                     </button>

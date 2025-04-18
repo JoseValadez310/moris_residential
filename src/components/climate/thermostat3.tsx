@@ -299,7 +299,7 @@ const Thermostat5 = () =>{
                                     
                                     <div className= "thermostat_setpoint">  
                                         <div className="setpoint_container">
-                                            <p className="setPoint_value">{cool_set_point_fb/10}°</p>
+                                            <p className="setPoint_value">{680/10}°</p>
                                             <p className="setPoint_title">Cool To</p>
                                         </div>
                                     </div>
@@ -312,7 +312,7 @@ const Thermostat5 = () =>{
                                     
                                     <div className= "thermostat_setpoint">  
                                         <div className="setpoint_container">
-                                            <p className="setPoint_value">{heat_set_point_fb/10}°</p>
+                                            <p className="setPoint_value">{720/10}°</p>
                                             <p className="setPoint_title">Heat To</p>
                                         </div>
                                     </div>

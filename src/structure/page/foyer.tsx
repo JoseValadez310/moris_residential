@@ -30,6 +30,11 @@ import portraitMode from "../../assets/images/icons/icons8-iphone-16-pro.svg"
 import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 
 const Foyer = () =>{
+    
+
+
+// Function to send a heartbeat response
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */

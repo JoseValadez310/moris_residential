@@ -17,12 +17,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^2.9.0",
+    "@crestron/ch5-crcomlib": "^2.12.0",
     "@crestron/ch5-webxpanel": "^2.8.0",
-    "animate.css": "^4.1.1",
-    "axios": "^1.7.9",
-    "eruda": "^3.0.1",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",

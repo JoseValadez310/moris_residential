@@ -52,7 +52,7 @@ const AppleTv = () => {
                             </div>
 
                             <div className="control-icon right" >
-                                <button className="btn_circle" onClick={() => controllerClick("right")}>
+                                <button className="btn_circle" onTouchStart={() => window.CrComLib.publishEvent("b","110",true)} onTouchEnd={() => window.CrComLib.publishEvent("b","110",false)}>
                                     <img className="btn_image" src={arrow} style={{filter:'invert(0)', transform:"rotate(90deg)",height:"75%"}}/>
                                 </button> 
                             </div>
@@ -64,8 +64,8 @@ const AppleTv = () => {
                             </div>
 
                             <div className="control-icon left">
-                                <button className="btn_circle" onClick={() => controllerClick("left")}>
-                                    <img className="btn_image" src={arrow} style={{filter:'invert(0)', transform:"rotate(270deg)",height:"75%"}}/>
+                            <button className="btn_circle" onTouchStart={() => window.CrComLib.publishEvent("b","109",true)} onTouchEnd={() => window.CrComLib.publishEvent("b","109",false)}>
+                            <img className="btn_image" src={arrow} style={{filter:'invert(0)', transform:"rotate(270deg)",height:"75%"}}/>
                                 </button>
                             </div>
 
@@ -152,7 +152,7 @@ const AppleTv = () => {
                             </div>
 
                             <div className="control-icon right" >
-                                <button className="btn_circle" onClick={() => controllerClick("right")}>
+                                <button className="btn_circle" onTouchStart={() => window.CrComLib.publishEvent("b","110",true)} onTouchEnd={() => window.CrComLib.publishEvent("b","110",false)}>
                                     <img className="btn_image" src={arrow} style={{filter:'invert(0)', transform:"rotate(90deg)",height:"85%"}}/>
                                 </button> 
                             </div>
@@ -164,7 +164,7 @@ const AppleTv = () => {
                             </div>
 
                             <div className="control-icon left">
-                                <button className="btn_circle" onClick={() => controllerClick("left")}>
+                                <button className="btn_circle" onTouchStart={() => window.CrComLib.publishEvent("b","109",true)} onTouchEnd={() => window.CrComLib.publishEvent("b","109",false)}>
                                     <img className="btn_image" src={arrow} style={{filter:'invert(0)', transform:"rotate(270deg)",height:"85%"}}/>
                                 </button>
                             </div>
@@ -238,15 +238,13 @@ const AppleTv = () => {
 
         }else if( id === "left"){
             
-            window.CrComLib.publishEvent("b","109",true)
-            window.CrComLib.publishEvent("b","109",false)
+        
             console.log("left")
 
 
         }else if( id === "right"){
             
-            window.CrComLib.publishEvent("b","110",true)
-            window.CrComLib.publishEvent("b","110",false)
+          
             console.log("right")
 
 
@@ -312,7 +310,7 @@ const AppleTv = () => {
 
     return(
         <>
-            {screenSize.width <= 430? mobileController :tabletController }
+            {screenSize.width <= 480? mobileController :tabletController }
         </>
     )
 }

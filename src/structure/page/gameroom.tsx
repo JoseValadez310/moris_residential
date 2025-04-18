@@ -48,6 +48,8 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const GameRoom = () =>{
+    
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */

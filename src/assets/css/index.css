@@ -663,7 +663,7 @@ body {
    
    
    
-    @media only screen and (max-device-width: 430px) and (orientation: portrait){
+    @media only screen and (max-device-width: 500px) and (orientation: portrait){
       .title_info{
           font-size: x-large;
           grid-column: 2/12;
@@ -703,6 +703,35 @@ body {
         .btn_selected img{
           height: 50%;
         }
+
+
+        .nav_container{
+          overflow: hidden;
+        }
+
+        .nav{
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 1px;
+          width: 100%;
+          overflow: hidden;
+      }
+
+      .nav .btn_selected{
+          width: 100%;
+          height: 100%;
+          border-radius: 0px;
+          background-size: 300% 300%;
+          background-image: linear-gradient(-45deg,rgb(20, 72, 133)25%,rgb(42, 123, 160) 50%,rgb(33, 98, 172) 100%);
+          animation: AnimateBG 10s ease infinite;
+          
+      }
+      .nav .btn_not_selected{
+          width: 100%;
+          height: 100%;   
+      }
     
 
 
@@ -835,3 +864,42 @@ body {
 
 
      
+
+
+#active_btn{
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg,rgb(20, 72, 133)25%,rgb(42, 123, 160) 50%,rgb(33, 98, 172) 100%);
+  -webkit-animation: AnimateBG 3s ease infinite;
+  animation: AnimateBG 3s ease infinite;
+
+  box-shadow: inset 0px 0px 15px 2px black;
+}
+
+
+
+
+
+
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

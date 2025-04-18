@@ -854,7 +854,7 @@ const DirecTv = () =>{
 
         return(
             <>
-                {screenSize.width <= 430? mobileController :tabletController }
+                {screenSize.width <= 480? mobileController :tabletController }
             </>
         )
 

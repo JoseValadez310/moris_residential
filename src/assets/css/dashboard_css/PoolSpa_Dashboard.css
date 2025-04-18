@@ -267,7 +267,7 @@
 
 
 
-        @media only screen and (max-device-width: 430px) and (max-device-width: 837px) and (orientation: portrait){
+        @media only screen and (max-width: 550px) and (orientation: portrait){
 
            .pool_spa_dashboard .title_info{
                 font-size: 1.75rem;

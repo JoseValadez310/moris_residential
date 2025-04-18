@@ -30,6 +30,8 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const LivingRoom = () =>{
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */

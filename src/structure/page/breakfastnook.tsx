@@ -48,6 +48,9 @@ import portraitMode from "../../assets/images/icons/icons8-iphone-16-pro.svg"
 import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 
 const BreakfastNook = () =>{
+    
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */

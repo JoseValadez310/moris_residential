@@ -16,9 +16,7 @@
     z-index: 10;
 }
 
-.mobile_nav{
-    display: none;
-}
+
 
 .light_dashboard .light_tile{
     animation: none;
@@ -149,7 +147,7 @@
 
 
 
-    @media only screen and (max-device-width: 550px) and (orientation: portrait){
+    @media only screen and (max-width: 550px) and (orientation: portrait){
         .light_dashboard{
                 grid-template-rows: 6% 1fr 1fr 1fr 1fr 1fr 1fr 6.75%;
         }
@@ -219,29 +217,7 @@
         */
 
 
-        .light_dashboard .nav_container {
-            display: none;
-        }
-
-        .light_dashboard .mobile_nav{
-            display: contents;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            grid-column: 1/13;
-            grid-row: 8/9;
-
-            width: 100%;
-            height: 100%;
-
-
-            backdrop-filter: blur(25px);
-            border-radius: 20px;
-            background-color: rgb(255, 255, 255, .3250);
-
-        }
-
+      
 
 
         
@@ -274,6 +250,11 @@
             background-color: rgb(70,70,70);
         }
 
+
+
+        .light_dashboard .nav button p{
+            font-size: small;
+        }
     
         
 

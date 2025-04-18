@@ -47,6 +47,11 @@ import lightOn from "../../assets/images/icons/icons8-light-on.svg"
 import lightOff from "../../assets/images/icons/icons8-light-off.svg"
 
 const Office = () =>{
+
+
+
+
+
 /*
 ---------------------------------------------------------------------------- Basic information regarding the page
 */
