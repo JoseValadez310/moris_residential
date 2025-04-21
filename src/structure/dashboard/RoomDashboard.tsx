@@ -50,11 +50,45 @@ const RoomsDashboard = () => {
     const [roomMusicActive1, setRoomMusicActive1] = useState(false) // dining room
     const [roomMusicActive2, setRoomMusicActive2] = useState(false) // living room
 
+    console.log(roomMusicActive1)
+    console.log(roomMusicActive2)
+
+    const [light1, setLight1] = useState(false) // Kids room 
+    const [light2, setLight2] = useState(false) // Kids room 
+    const [light3, setLight3] = useState(false) // Kids room 
+    const [light4, setLight4] = useState(false) // Kids room 
+    const [light5, setLight5] = useState(false) // Kids room 
+
+    const [light6,  setLight6]  = useState(false) // Dining room 
+    const [light7,  setLight7]  = useState(false) // Dining room 
+    const [light8,  setLight8]  = useState(false) // Dining room 
+    const [light9,  setLight9]  = useState(false) // Dining room 
+    const [light10, setLight10] = useState(false) // Dining room 
+
+    const [light11, setLight11] = useState(false) // Living room 
+    const [light12, setLight12] = useState(false) // Living room 
+    const [light13, setLight13] = useState(false) // Living room 
+    const [light14, setLight14] = useState(false) // Living room  
+    const [light15, setLight15] = useState(false) // Living room 
+
+    const [light16, setLight16] = useState(false) // Foyer room 
+    const [light17, setLight17] = useState(false) // Foyer room 
+    const [light18, setLight18] = useState(false) // Foyer room 
+    const [light19, setLight19] = useState(false) // Foyer room 
+    const [light20, setLight20] = useState(false) // Foyer room 
+
+    const [light21, setLight21] = useState(false) // Backyard
+    const [light22, setLight22] = useState(false) // Backyard
+    const [light23, setLight23] = useState(false) // Backyard
+    const [light24, setLight24] = useState(false) // Backyard
+    const [light25, setLight25] = useState(false) // Backyard
+
+
 
 
 
     useEffect(()=>{
-
+        //------------
         const roomMusic1 = window.CrComLib.subscribeState("b","507",(value:boolean)=>{setRoomMusicActive1(value)})
         const roomMusic2 = window.CrComLib.subscribeState("b","503",(value:boolean)=>{setRoomMusicActive2(value)})
 
@@ -68,13 +102,43 @@ const RoomsDashboard = () => {
         const room7 = window.CrComLib.subscribeState("n","7",(value:number)=>{setRoomActiveSource7(value)})
         const room8 = window.CrComLib.subscribeState("n","8",(value:number)=>{setRoomActiveSource8(value)})
         const room9 = window.CrComLib.subscribeState("n","9",(value:number)=>{setRoomActiveSource9(value)})
-  
 
+        //------------
+        const light1 = window.CrComLib.subscribeState("b","299",(value:boolean)=>{setLight1(value)}) // kids room 
+        const light2 = window.CrComLib.subscribeState("b","300",(value:boolean)=>{setLight2(value)}) // kids room 
+        const light3 = window.CrComLib.subscribeState("b","301",(value:boolean)=>{setLight3(value)}) // kids room 
+        const light4 = window.CrComLib.subscribeState("b","302",(value:boolean)=>{setLight4(value)}) // kids room 
+        const light5 = window.CrComLib.subscribeState("b","303",(value:boolean)=>{setLight5(value)}) // kids room 
+
+        const light6 = window.CrComLib.subscribeState("b","278",(value:boolean)=>{setLight6(value)})   // Dining room 
+        const light7 = window.CrComLib.subscribeState("b","279",(value:boolean)=>{setLight7(value)})   // Dining room 
+        const light8 = window.CrComLib.subscribeState("b","280",(value:boolean)=>{setLight8(value)})   // Dining room 
+        const light9 = window.CrComLib.subscribeState("b","281",(value:boolean)=>{setLight9(value)})   // Dining room 
+        const light10 = window.CrComLib.subscribeState("b","282",(value:boolean)=>{setLight10(value)}) // Dining room 
+
+        const light11 = window.CrComLib.subscribeState("b","315",(value:boolean)=>{setLight11(value)}) // Living room 
+        const light12 = window.CrComLib.subscribeState("b","316",(value:boolean)=>{setLight12(value)}) // Living room 
+        const light13 = window.CrComLib.subscribeState("b","317",(value:boolean)=>{setLight13(value)}) // Living room 
+        const light14 = window.CrComLib.subscribeState("b","318",(value:boolean)=>{setLight14(value)}) // Living room 
+        const light15 = window.CrComLib.subscribeState("b","319",(value:boolean)=>{setLight15(value)}) // Living room 
+
+        const light16 = window.CrComLib.subscribeState("b","292",(value:boolean)=>{setLight16(value)}) // Foyer room 
+        const light17 = window.CrComLib.subscribeState("b","293",(value:boolean)=>{setLight17(value)}) // Foyer room 
+        const light18 = window.CrComLib.subscribeState("b","294",(value:boolean)=>{setLight18(value)}) // Foyer room 
+        const light19 = window.CrComLib.subscribeState("b","295",(value:boolean)=>{setLight19(value)}) // Foyer room 
+        const light20 = window.CrComLib.subscribeState("b","296",(value:boolean)=>{setLight20(value)}) // Foyer room 
+
+        const light21 = window.CrComLib.subscribeState("b","250",(value:boolean)=>{setLight21(value)}) // Backyard
+        const light22 = window.CrComLib.subscribeState("b","251",(value:boolean)=>{setLight22(value)}) // Backyard
+        const light23 = window.CrComLib.subscribeState("b","252",(value:boolean)=>{setLight23(value)}) // Backyard
+        const light24 = window.CrComLib.subscribeState("b","253",(value:boolean)=>{setLight24(value)}) // Backyard
+        const light25 = window.CrComLib.subscribeState("b","254",(value:boolean)=>{setLight25(value)}) // Backyard 
+ 
         return () => {
-
+        //------------
             window.CrComLib.unsubscribeState("b","507",roomMusic1)
             window.CrComLib.unsubscribeState("b","503",roomMusic2)
-
+        //------------
             window.CrComLib.unsubscribeState("n","1",room1)
             window.CrComLib.unsubscribeState("n","2",room2)
             window.CrComLib.unsubscribeState("n","3",room3)
@@ -84,6 +148,36 @@ const RoomsDashboard = () => {
             window.CrComLib.unsubscribeState("n","7",room7)
             window.CrComLib.unsubscribeState("n","8",room8)
             window.CrComLib.unsubscribeState("n","9",room9)
+        //------------
+            window.CrComLib.unsubscribeState("b","299",light1)
+            window.CrComLib.unsubscribeState("b","300",light2)
+            window.CrComLib.unsubscribeState("b","301",light3)
+            window.CrComLib.unsubscribeState("b","302",light4)
+            window.CrComLib.unsubscribeState("b","303",light5)
+
+            window.CrComLib.unsubscribeState("b","278",light6)
+            window.CrComLib.unsubscribeState("b","279",light7)
+            window.CrComLib.unsubscribeState("b","280",light8)
+            window.CrComLib.unsubscribeState("b","281",light9)
+            window.CrComLib.unsubscribeState("b","282",light10)
+
+            window.CrComLib.unsubscribeState("b","315",light11)
+            window.CrComLib.unsubscribeState("b","316",light12)
+            window.CrComLib.unsubscribeState("b","317",light13)
+            window.CrComLib.unsubscribeState("b","318",light14)
+            window.CrComLib.unsubscribeState("b","319",light15)
+
+            window.CrComLib.unsubscribeState("b","292",light16)
+            window.CrComLib.unsubscribeState("b","293",light17)
+            window.CrComLib.unsubscribeState("b","294",light18)
+            window.CrComLib.unsubscribeState("b","295",light19)
+            window.CrComLib.unsubscribeState("b","296",light20)
+
+            window.CrComLib.unsubscribeState("b","250",light21)
+            window.CrComLib.unsubscribeState("b","251",light22)
+            window.CrComLib.unsubscribeState("b","252",light23)
+            window.CrComLib.unsubscribeState("b","253",light24)
+            window.CrComLib.unsubscribeState("b","254",light25)
 
         }
     })
@@ -188,7 +282,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/kidsroom`} className="room_card" id={false?"active_btn" : "" }>
+            <Link to={`/kidsroom`} className="room_card" id={light1 || light2 || light3 || light4 || light5?"active_btn" : "" }>
                 <div className="test">
                     <p className="room_name">Kid's Room</p>
 
@@ -238,7 +332,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/diningroom`} className="room_card" id={false?"active_btn" : "" }>
+            <Link to={`/diningroom`} className="room_card" id={light6 || light7 || light8 || light9 || light10?"active_btn" : "" }>
                 <div className="test">
                     <p className="room_name">Dining Room</p>
 
@@ -248,7 +342,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/livingroom`} className="room_card" id={false?"active_btn" : "" }>
+            <Link to={`/livingroom`} className="room_card" id={light11 || light12 || light13 || light14 || light15?"active_btn" : "" }>
                 <div className="test">
                     <p className="room_name">Living Room</p>
 
@@ -258,7 +352,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/foyer`} className="room_card" id={false?"active_btn" : "" }>
+            <Link to={`/foyer`} className="room_card" id={light16 || light17 || light18 || light19 || light20?"active_btn" : "" }>
                 <div className="test">
                     <p className="room_name">Foyer</p>
 
@@ -267,8 +361,6 @@ const RoomsDashboard = () => {
                     </div>
                 </div>
             </Link>
-
-          
         </>
     )
 
@@ -298,20 +390,15 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/backyard`} className="room_card" id={false?"active_btn" : "" }>
+            <Link to={`/backyard`} className="room_card" id={light21 || light22 || light23 || light24 || light25? "active_btn" : "" }>
                 <div className="test">
-                    <p className="room_name">Bar</p>
+                    <p className="room_name">Backyard</p>
 
                     <div className="icon_preview">
-                        <img src={TV} style={{ height: "1.25rem" }} />                           
                         <img src={Light} style={{ height: "1.25rem" }} />
-                        <img src={Audio} style={{ height: "1.25rem" }} />
                     </div>
                 </div>
             </Link>
-
-          
-          
         </>
     )
 

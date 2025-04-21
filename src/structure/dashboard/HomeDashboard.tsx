@@ -1,6 +1,6 @@
 
 // React 
-import { useState, useCallback } from "react"
+import { useState } from "react"
 
 // React Router DOM
 import { Link } from "react-router-dom"
@@ -12,6 +12,8 @@ import "../../assets/css/dashboard_css/Home_Dashboard.sass"
 // Components
 import DateDisplay from "../../components/DateDisplay"
 import Clock       from "../../components/Clock"
+import GlobalPowerMenu from "../../components/globalPowerMenu"
+import GlobalAudioMenu from "../../components/globalAudioMenu"
 
 // tile icons
 import Rooms   from "../../assets/images/icons/icons8-room.svg"
@@ -21,6 +23,7 @@ import Climate from "../../assets/images/icons/icons8-winter.svg"
 import Pool    from "../../assets/images/icons8-swimming-pool.svg"
 import Security from "../../assets/images/icons8-smart-home-shield.svg"
 import mute from "../../assets/images/icons/icons8-no-audio.svg"
+import cross from "../../assets/images/icons/icons8-x.svg"
 
 
 
@@ -34,8 +37,9 @@ const HomeDashboard = () => {
 
     
 
-    const url = "http://10.10.10.46";
+
     const [tvPowerMenu, setTvPowerMenu] = useState(false)      //  TV Power Menu    
+    const [muteMenuGrid, setMuteMenuGrid] = useState(false)    // mute grid
     const [count,setCount] = useState(1)
     const [viewportViewer,setViewportViewer ] = useState(false)
 
@@ -46,89 +50,54 @@ const HomeDashboard = () => {
         setCount(count+1)
     }
 
-    const powerMenu = (id: string) => {
-        if (id === "menu") {
-          console.log("into power menu");
-          setTvPowerMenu(!tvPowerMenu);
-        } else if (id === "menu_off") {
-          console.log("Turning off all media sources");
-          setTvPowerMenu(!tvPowerMenu);
+    const powerMenu =() => {
       
-          // Define and run the asynchronous function to process each zone with a 1-second delay.
-          const runZoneCommands = async () => {
-            // Array of zone IDs as strings.
-            const zones: string[] = [
-              "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-              "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"
-            ];
-      
-            // Loop through each zone, sending the publish events and waiting 1 second per zone.
-            for (const zone of zones) {
-              window.CrComLib.publishEvent("b", zone, true);
-              window.CrComLib.publishEvent("b", zone, false);
-              console.log(`Sending command for zone ${zone}`);
-              
-              // Create a 1-second delay before processing the next zone.
-              await new Promise(resolve => setTimeout(resolve, 250));
-            }
-          };
-      
-          // Execute the asynchronous zone command function.
-          runZoneCommands();
-        }
+        setTvPowerMenu(true)
+        
       };
+    
+    const muteMenu = () => {
+        setMuteMenuGrid(true)
+    }
 
 
-      const doScriptCommand = useCallback(async (scriptName: string) => {
-        const endpoint = `${url}/api/Script/${scriptName}/`;
-        console.log("[doScriptCommand] Fetching:", endpoint);
-        try {
-          await fetch(endpoint);
-        } catch (error) {
-          console.log("[doScriptCommand] Error with fetch command:", error);
-        }
-      }, [url]);
-
-      const muteVolume = () => {
-        console.log("[muteVolume] Toggling mute");
-        doScriptCommand("Mute%20Toggle");
-      };
-      
+  
 
     return (
 
         <div className="living_room_page">
-
-              <div className={tvPowerMenu? "power_menu_overlay" : "hide_power_menu_overlay"} >
-            <div className="power_menu">
-                <p className="power_menu_text" style={{margin:"1rem"}}> 
-                    Would you like to turn off all media sources? 
-                </p>
-
-                <div className="power_menu_button">
-                    <Link to={"/"} className="yes_reboot"> 
-                        <button className="yes_reboot" onClick={()=> powerMenu("menu_off")}> 
-                            <p>YES</p> 
-                        </button> 
-                    </Link>
-                    
-                    <button className="no_reboot" onClick={()=> powerMenu("menu")}> 
-                        <p>NO</p> 
-                    </button>
-                </div>
+        
+        <div className={tvPowerMenu? "home_power_menu" : "display_none"} >
+        
+            <div className="golbal_power_close_menu" onClick={() => setTvPowerMenu(false)}> 
+                <button className="btn_circle"> <img className="btn_image" src={cross} /> </button>
             </div>
+
+            <GlobalPowerMenu  />
+            
+
+        </div>
+
+
+        <div className={muteMenuGrid? "home_power_menu" : "display_none"} >
+          
+            <div className="golbal_power_close_menu" onClick={() => setMuteMenuGrid(false)}> 
+                <button className="btn_circle"> <img className="btn_image" src={cross} /> </button>
+            </div>
+
+            <GlobalAudioMenu  />
+        
+
         </div>
 
             <div className="home_power_container">
-                <button className="home_button" onClick={()=>powerMenu("menu")}>
-                    
-
+                <button className="home_button" onClick={()=>powerMenu()}>
                     <img  src={power} />
                 </button>
             </div>
 
         <div className="home_power_container" id="home_mute">
-            <button  onClick={muteVolume} className='home_button'>
+            <button className='home_button'  onClick={()=>muteMenu()}>
                 <img className ="btn_image"src={mute} style={{filter:"invert(0)"}}/>
             </button>
         </div>

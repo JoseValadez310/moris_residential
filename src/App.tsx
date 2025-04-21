@@ -1,6 +1,6 @@
 import './assets/css/Index.css'
 
-import {useMemo, useState} from 'react';
+import {useMemo} from 'react';
 import useWebXPanel from "./hooks/useWebXPanel";
 
 import {createHashRouter, RouterProvider} from 'react-router-dom'
@@ -61,7 +61,7 @@ function App() {
   useWebXPanel(webXPanelConfig);
 
   
-  const [mute, setMute] = useState<string>("False");
+ 
 
   const router = createHashRouter ([
   {
@@ -76,7 +76,7 @@ function App() {
   },
   {
     path: '/AudioDashboard',
-    element: <AudioDashboard  mute={mute} setMute={setMute} />
+    element: <AudioDashboard  />
   },
   {
     path: '/LightDashboard',
@@ -170,7 +170,7 @@ function App() {
 
 
 
-  console.log(mute)
+
 
   
   return (
