@@ -880,6 +880,10 @@ body {
 }
 
 
+#active_btn .icon_preview {
+  filter: brightness(0) invert(1);
+}
+
 
 
 @-webkit-keyframes AnimateBG {

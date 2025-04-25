@@ -509,10 +509,15 @@ const filteredItems = items.filter(item => {
       }
     } else {
       sendCommand(`AckPickItem ${item.guid}`);
+      console.log("does item, have children", item.hasChildren)
+      if(item.hasChildren === false){
+         setIsBrowseMenuVisible(false)
+         sendCommand("browseTopMenu")
+      }
       setTimeout(() => {
         sendCommand('GetStatus');
         setIsAtTopMenu(false);
-      }, 250);
+      }, 1000);
     }
   };
 

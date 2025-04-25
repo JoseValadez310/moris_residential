@@ -282,7 +282,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/kidsroom`} className="room_card" id={light1 || light2 || light3 || light4 || light5?"active_btn" : "" }>
+            <Link to={`/kidsroom`} className="room_card" id={light1 || light2 || light3 || light4 || light5?"" : "" }>
                 <div className="test">
                     <p className="room_name">Kid's Room</p>
 
@@ -332,7 +332,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/diningroom`} className="room_card" id={light6 || light7 || light8 || light9 || light10?"active_btn" : "" }>
+            <Link to={`/diningroom`} className="room_card" id={light6 || light7 || light8 || light9 || light10?"" : "" }>
                 <div className="test">
                     <p className="room_name">Dining Room</p>
 
@@ -342,7 +342,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/livingroom`} className="room_card" id={light11 || light12 || light13 || light14 || light15?"active_btn" : "" }>
+            <Link to={`/livingroom`} className="room_card" id={light11 || light12 || light13 || light14 || light15?"" : "" }>
                 <div className="test">
                     <p className="room_name">Living Room</p>
 
@@ -352,7 +352,7 @@ const RoomsDashboard = () => {
                 </div>
             </Link>
 
-            <Link to={`/foyer`} className="room_card" id={light16 || light17 || light18 || light19 || light20?"active_btn" : "" }>
+            <Link to={`/foyer`} className="room_card" id={light16 || light17 || light18 || light19 || light20?"" : "" }>
                 <div className="test">
                     <p className="room_name">Foyer</p>
 
